@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: elagpt-backend
+    env: docker
+    dockerfilePath: ./Dockerfile
+    rootDir: backend
+    plan: free
+    envVars:
+      - key: DEFAULT_AI_PROVIDER
+        value: mock
+      - key: DATABASE_URL
+        # In production, use a real PostgreSQL database URL here instead of SQLite
+        value: sqlite:///./ai_platform.db
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
